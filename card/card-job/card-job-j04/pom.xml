@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.com.bancoamazonia.integracao.card</groupId>
+    <artifactId>card-job</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>card-job-j04</artifactId>
+  <name>card-job-j04</name>
+  <url>http://maven.apache.org</url>
+	  
+  <properties>
+    <!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+    <project.build.sourceEncoding>Cp1252</project.build.sourceEncoding>
+    
+    <job.numero>04</job.numero>
+	<sigla.sistema>CARD</sigla.sistema>
+	<versao.opcon>${project.version}</versao.opcon>
+	<sigla.basah1>DIA</sigla.basah1>
+	<codigo.numerico>01</codigo.numerico>
+	<token.name>${ambiente}-${sigla.sistema}-J${job.numero}-Fase</token.name>
+	<target.package.dir>${project.build.directory}/environment/${ambiente}</target.package.dir>
+  </properties>
+  
+  <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>desenvolvimento</id>
+			<properties>
+				<ambiente>D</ambiente>
+				<msgindir>F:\\opcon\\msgindir</msgindir>
+				<connectionfile.0>${project.basedir}/src/main/resources/db/Connection-CARD.xml</connectionfile.0>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>${project.basedir}/src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+					<resource>
+						<directory>${project.basedir}/src/main/resources/db</directory>
+						<targetPath>${target.package.dir}</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>homologacao</id>
+			<properties>
+				<ambiente>H</ambiente>
+				<msgindir>C:\\Program Files\\OpConxps\\MSLSAM\\MSGIN</msgindir>
+				<connectionfile.0>c:\\jobs\\CARD\\Connection-CARD.xml</connectionfile.0>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>${project.basedir}/src/main/resources</directory>
+						<excludes>
+							<exclude>db/**</exclude>
+						</excludes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>producao</id>
+			<properties>
+				<ambiente>P</ambiente>
+				<msgindir>C:\\Program Files\\OpConxps\\MSLSAM\\MSGIN</msgindir>
+				<connectionfile.0>c:\\jobs\\CARD\\Connection-CARD.xml</connectionfile.0>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>${project.basedir}/src/main/resources</directory>
+						<excludes>
+							<exclude>db/**</exclude>
+						</excludes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+	  
+  <dependencies>
+  </dependencies>
+</project>

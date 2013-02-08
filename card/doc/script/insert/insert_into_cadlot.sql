@@ -1,0 +1,1 @@
+insert into cadlot values ('BASA', 'E',	1, 'EMITIDOS', 'Cartoes emitidos para o SISARD', 'A', 'CARD_SISARD_yyyyMMdd_yyyyMMdd.%SQ3%', 'N', 'N', 'N', '', '', '\\castanha\Integracao\CARD\SISARD', '', '', '\\castanha\Integracao\CARD\SISARD', '', '', '', 'N', '', '', '', 'N',	0, 'D', '', getdate(), 'FRMPARLOTE')

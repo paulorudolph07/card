@@ -1,0 +1,9 @@
+<connections>
+  <connection name="CARDCON01">
+   <database>sqlserver</database>
+    <driverclass>net.sourceforge.jtds.jdbc.Driver</driverclass>
+    <url>jdbc:jtds:sqlserver://localhost:49733/pd_card;domain=BASA;useNTLMv2=true;</url>
+    <username>7485</username>
+    <password>N5MGbGKYRs/okxg956wgag==</password>
+  </connection>
+</connections>
