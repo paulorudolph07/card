@@ -18,7 +18,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE spu_FileWritter
+CREATE PROCEDURE spu_FileWritter
 	@destinationDir nvarchar(255),
 	@fileName varchar(100)
 AS
