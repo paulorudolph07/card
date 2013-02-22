@@ -1,0 +1,141 @@
+[20/02/2013 19:04:59] [ INFO] {OpconExec.java->showInitProcess} &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+[20/02/2013 19:04:59] [ INFO] {OpconExec.java->showInitProcess} Inicio do Processamento
+[20/02/2013 19:04:59] [DEBUG] {OpconConfig.java->logProperties} %%%%%%%%%%%%%%%%%%%%%%%%%%%
+[20/02/2013 19:04:59] [DEBUG] {OpconConfig.java->logProperties} OpconConfig properties:
+{integration.dir=${integration.dir}, nome.conexao.teste.0=CARDCON01, -----------------------------------------=, connectionfile.0=/root/git/card/card/card-job/card-job-j01/src/main/resources/db/Connection-CARD.xml, frequency=DIA, fase.1=br.com.bancoamazonia.integracao.card.job.j01.Fase1, fase.0=br.com.bancoamazonia.integracao.card.job.j01.Fase0, msgindir=F:\opcon\msgindir, tokenname=D-CARD-J01-Fase}
+[20/02/2013 19:04:59] [DEBUG] {OpconConfig.java->logProperties} %%%%%%%%%%%%%%%%%%%%%%%%%%%
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->carregar} ========= Carregando conexoes =========
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} ================================
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} DNS da Conexão: CARDCON01
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} Base de Dados: sqlserver
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} Driver: net.sourceforge.jtds.jdbc.Driver
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} URL: jdbc:jtds:sqlserver://localhost:49733/pd_card;domain=BASA;useNTLMv2=true;
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} Usuário: 7485
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->logConexao} PWD: N5MGbGKYRs/okxg956wgag==
+[20/02/2013 19:05:00] [DEBUG] {ConexaoFactoryProvider.java->carregar} ========= Conexoes carregadas com sucesso =========
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->logSystemProperties} &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->logSystemProperties} System properties:
+java.runtime.name=Java(TM) SE Runtime Environment
+exec.mainClass=br.com.bancoamazonia.integracao.opcon.OpconExec
+sun.boot.library.path=/usr/lib/jvm/jdk1.6.0_31/jre/lib/i386
+java.vm.version=20.6-b01
+java.vm.vendor=Sun Microsystems Inc.
+java.vendor.url=http://java.sun.com/
+guice.disable.misplaced.annotation.check=true
+path.separator=:
+java.vm.name=Java HotSpot(TM) Server VM
+file.encoding.pkg=sun.io
+sun.java.launcher=SUN_STANDARD
+user.country=US
+sun.os.patch.level=unknown
+java.vm.specification.name=Java Virtual Machine Specification
+user.dir=/root/git/card/card/card-job/card-job-j01
+java.runtime.version=1.6.0_31-b04
+java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+java.endorsed.dirs=/usr/lib/jvm/jdk1.6.0_31/jre/lib/endorsed
+os.arch=i386
+java.io.tmpdir=/tmp
+line.separator=
+
+java.vm.specification.vendor=Sun Microsystems Inc.
+os.name=Linux
+classworlds.conf=/media/D/dev/workspace/.metadata/.plugins/org.eclipse.m2e.core/launches/m2conf3252873683687822760.tmp
+sun.jnu.encoding=UTF-8
+java.library.path=/usr/lib/jvm/jdk1.6.0_31/jre/lib/i386/server:/usr/lib/jvm/jdk1.6.0_31/jre/lib/i386:/usr/lib/jvm/jdk1.6.0_31/jre/../lib/i386:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64:/usr/lib/jvm/java-6-openjdk-amd64/jre/../lib/amd64:/usr/java/packages/lib/i386:/lib:/usr/lib
+java.specification.name=Java Platform API Specification
+java.class.version=50.0
+sun.management.compiler=HotSpot Tiered Compilers
+os.version=3.2.0-37-generic
+user.home=/root
+user.timezone=America/Belem
+java.awt.printerjob=sun.print.PSPrinterJob
+file.encoding=UTF-8
+java.specification.version=1.6
+java.class.path=/media/D/dev/springsource_64/sts-3.1.0.RELEASE/configuration/org.eclipse.osgi/bundles/569/1/.cp/jars/plexus-classworlds-2.4.jar
+user.name=root
+java.vm.specification.version=1.0
+sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher -Pdesenvolvimento -B exec:java -Dexec.mainClass=br.com.bancoamazonia.integracao.opcon.OpconExec -Dexec.args=0 -e
+java.home=/usr/lib/jvm/jdk1.6.0_31/jre
+sun.arch.data.model=32
+user.language=en
+java.specification.vendor=Sun Microsystems Inc.
+java.vm.info=mixed mode
+java.version=1.6.0_31
+securerandom.source=file:/dev/./urandom
+java.ext.dirs=/usr/lib/jvm/jdk1.6.0_31/jre/lib/ext:/usr/java/packages/lib/ext
+sun.boot.class.path=/usr/lib/jvm/jdk1.6.0_31/jre/lib/resources.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/rt.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/sunrsasign.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/jsse.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/jce.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/charsets.jar:/usr/lib/jvm/jdk1.6.0_31/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/jdk1.6.0_31/jre/classes
+java.vendor=Sun Microsystems Inc.
+maven.home=/root/git/card/card/card-job/card-job-j01/EMBEDDED
+file.separator=/
+java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi
+sun.io.unicode.encoding=UnicodeLittle
+sun.cpu.endian=little
+exec.args=0
+sun.cpu.isalist=
+
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->logSystemProperties} Default locale: en_US
+[20/02/2013 19:05:00] [ERROR] {OpconExec.java->getSystemInfo} Erro ao executar comando "systeminfo"
+java.io.IOException: Cannot run program "systeminfo" (in directory "."): java.io.IOException: error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:460)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.getSystemInfo(OpconExec.java:285)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.logSystemProperties(OpconExec.java:275)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.main(OpconExec.java:308)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:297)
+	at java.lang.Thread.run(Thread.java:662)
+Caused by: java.io.IOException: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:148)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:65)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:453)
+	... 9 more
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->logSystemProperties} System info:
+null
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->logSystemProperties} &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->testarConexoes} Executando testes de conexão a banco de dados
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->testarConexoes} Conexão 'CARDCON01' encontrada com sucesso
+[20/02/2013 19:05:00] [DEBUG] {Conexao.java->abrirConexao} Tentando abrir conexão 'CARDCON01'. (Driver: net.sourceforge.jtds.jdbc.Driver) (Url: jdbc:jtds:sqlserver://localhost:49733/pd_card;domain=BASA;useNTLMv2=true;) (Usuário: 7485)
+[20/02/2013 19:05:00] [DEBUG] {OpconExec.java->testarConexoes} Erro ao tentar abrir conexão 'CARDCON01'!
+[20/02/2013 19:05:00] [ERROR] {OpconExec.java->exec} 
+br.com.bancoamazonia.integracao.opcon.OpconException: Falha no teste da conexão 'CARDCON01'. Erro ao abrir conexão
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.testarConexoes(OpconExec.java:173)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.exec(OpconExec.java:130)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.main(OpconExec.java:309)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:297)
+	at java.lang.Thread.run(Thread.java:662)
+Caused by: br.com.bancoamazonia.integracao.base.BaseDadosException: Erro de SQL
+	at br.com.bancoamazonia.integracao.base.Conexao.abrirConexao(Conexao.java:159)
+	at br.com.bancoamazonia.integracao.opcon.OpconExec.testarConexoes(OpconExec.java:166)
+	... 8 more
+Caused by: java.sql.SQLException: Network error IOException: Connection refused
+	at net.sourceforge.jtds.jdbc.ConnectionJDBC2.<init>(ConnectionJDBC2.java:395)
+	at net.sourceforge.jtds.jdbc.ConnectionJDBC3.<init>(ConnectionJDBC3.java:50)
+	at net.sourceforge.jtds.jdbc.Driver.connect(Driver.java:184)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at br.com.bancoamazonia.integracao.base.Conexao.abrirConexao(Conexao.java:151)
+	... 9 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at net.sourceforge.jtds.jdbc.SharedSocket.createSocketForJDBC3(SharedSocket.java:305)
+	at net.sourceforge.jtds.jdbc.SharedSocket.<init>(SharedSocket.java:255)
+	at net.sourceforge.jtds.jdbc.ConnectionJDBC2.<init>(ConnectionJDBC2.java:323)
+	... 14 more
+[20/02/2013 19:05:00] [ INFO] {OpconExec.java->showEndProcessError} Erro na execução do job. Código de erro: -9 [Falha no teste da conexão 'CARDCON01'. Erro ao abrir conexão]
+[20/02/2013 19:05:00] [ INFO] {OpconExec.java->showEndProcessError} Processamento finalizado com problemas
+[20/02/2013 19:05:00] [ INFO] {OpconExec.java->showEndProcessError} &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
