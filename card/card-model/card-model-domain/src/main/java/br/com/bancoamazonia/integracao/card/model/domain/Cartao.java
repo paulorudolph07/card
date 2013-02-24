@@ -5,13 +5,14 @@ package br.com.bancoamazonia.integracao.card.model.domain;
  *
  */
 public class Cartao {
-
-	private Long id;
-	// numero, cliente, tipo e status devem ser constraint
+	// id
 	private String numero;
+	// criar index para cliente
 	private Cliente cliente;
 	private ClasseCartao classe;
 	private Vencimento vencimento;
 	private Limite limite;
-	
+	private Evento status;
+	// o cartao pode pertencer ou nao a um cliente do banco
+	private Integer agencia;
 }

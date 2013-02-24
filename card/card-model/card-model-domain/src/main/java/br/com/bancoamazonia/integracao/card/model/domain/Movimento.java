@@ -7,15 +7,15 @@ import java.util.Date;
  *
  */
 public class Movimento {
-
 	private Long id;
 	// cartao e evento devem ser constraint
 	private Cartao cartao;
-	// evento = status cartao
 	private Evento evento;
 	private Integer sequencial;
 	private Date data;
-	// registra o movimento para uma determinada agencia
+	// registra o movimento para uma determinada agencia (historico)
 	private Integer agencia;
-	
+	private Boolean valido;
+	// qual arquivo gerou este movimento
+	private Arquivo arquivoOrigem;
 }
