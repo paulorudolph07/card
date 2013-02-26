@@ -7,12 +7,12 @@ package br.com.bancoamazonia.integracao.card.model.domain;
 public class Cartao {
 	// id
 	private String numero;
-	// criar index para cliente
 	private Cliente cliente;
-	private ClasseCartao classe;
+	// facilitara as consultas para relatorios baseados no status (evento) do cartao
+	private Evento status;
+	private Classe classe;
 	private Vencimento vencimento;
 	private Limite limite;
-	private Evento status;
 	// o cartao pode pertencer ou nao a um cliente do banco
 	private Integer agencia;
 }

@@ -6,6 +6,6 @@ package br.com.bancoamazonia.integracao.card.model.domain;
  */
 public class Evento {
 	//id
-	private Integer codigo;
+	private Byte codigo;
 	private String descricao;
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.integracao.card.model.domain.Renda" table="renda">
+		<composite-id>
+			<key-property name="cliente" column="codigo_cliente"/>
+			<key-property name="fontePagadora" column="id_fonte_pagadora"/>
+		</composite-id>
+		<component name="telefone"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Telefone" >
+				<property name="ddd" column="ddd" length="2"/>
+				<property name="numero" column="tel_comercial" length="8"/>
+		</component>
+		<many-to-one name="ocupacao" column="id_ocupacao"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Ocupacao"/>
+		<property name="valor"/>
+		<property name="dataInicio" column="data_inicio"/>
+	</class>
+</hibernate-mapping>

@@ -1,6 +1,6 @@
 package br.com.bancoamazonia.integracao.card.model.domain;
 
-public class Vencimento {
+public class Sexo {
 	private Byte id;
-	private Byte dia;
+	private Character codigo;
 }

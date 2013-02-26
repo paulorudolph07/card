@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.integracao.card.model.domain.Cartao" table="cartao">
+		<id name="numero" type="string"/>
+		<many-to-one name="cliente" column="codigo_cliente" class="br.com.bancoamazonia.integracao.card.model.domain.Cliente"/>
+		<many-to-one name="status"  class="br.com.bancoamazonia.integracao.card.model.domain.Evento"/>
+		<many-to-one name="classe" column="id_classe" class="br.com.bancoamazonia.integracao.card.model.domain.Classe"/>
+		<many-to-one name="vencimento" column="id_vencimento" class="br.com.bancoamazonia.integracao.card.model.domain.Vencimento"/>
+		<many-to-one name="limite" column="id_limite" class="br.com.bancoamazonia.integracao.card.model.domain.Limite"/>
+		<property name="agencia" length="3"/>
+	</class>
+</hibernate-mapping>

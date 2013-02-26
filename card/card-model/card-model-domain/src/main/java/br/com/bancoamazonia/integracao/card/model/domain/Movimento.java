@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Movimento {
 	private Long id;
-	// cartao e evento devem ser constraint
+	// cartao, evento e sequencial devem ser constraint
 	private Cartao cartao;
 	private Evento evento;
 	private Integer sequencial;

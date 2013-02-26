@@ -6,11 +6,12 @@ package br.com.bancoamazonia.integracao.card.model.domain;
  */
 public class Endereco {
 	private Long id;
+	// estado e cep = constraint
 	private Estado estado;
-	private String cep;
+	private Integer cep;
+	private Integer numero;
 	private String municipio;
 	private String bairro;
 	private String logradouro;
-	private String numero;
 	private String complemento;
 }

@@ -15,5 +15,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>card-model-domain</module>
+    <module>card-model-dao</module>
   </modules>
 </project>
