@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.integracao.card.model.domain.Pessoa" table="pessoa">
+		<id name="codigo" type="string" length="14"/>
+		<property name="nome" not-null="true"/>
+			
+		<joined-subclass name="br.com.bancoamazonia.integracao.card.model.domain.Cliente">
+			<key column="codigo"/>
+			<many-to-one name="titular" column="codigo_titular" not-null="false"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Cliente" />
+			<component name="celular"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Telefone" >
+				<property name="ddd" length="2"/>
+				<property name="numero" column="celular" length="8"/>
+			</component>
+			<many-to-one name="tipo" column="id_tipo_cliente" not-null="true"
+				class="br.com.bancoamazonia.integracao.card.model.domain.TipoCliente"/>
+			<many-to-one name="sexo" column="id_sexo" not-null="true"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Sexo"/>
+			<many-to-one name="estadoCivil" column="id_estado_civil" not-null="true"
+				class="br.com.bancoamazonia.integracao.card.model.domain.EstadoCivil"/>
+			<many-to-one name="escolaridade" column="id_escolaridade" not-null="true"
+				class="br.com.bancoamazonia.integracao.card.model.domain.Escolaridade"/>
+			<property name="nomeMae" column="nome_mae" not-null="true"/>
+			<property name="dataNascimento" column="data_nascimento" not-null="true"/>
+			<property name="email" not-null="false"/>
+		</joined-subclass>
+		<joined-subclass name="br.com.bancoamazonia.integracao.card.model.domain.FontePagadora" table="fonte_pagadora">
+			<key column="codigo"/>
+			<many-to-one name="tipo" column="id_tipo_fonte_pagadora" not-null="true"
+				class="br.com.bancoamazonia.integracao.card.model.domain.TipoFontePagadora"/>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

@@ -13,21 +13,32 @@
   <properties>
   	<hibernateVersion>4.1.9.Final</hibernateVersion>
   </properties>
-  <build>
-    <plugins>
-      <!-- hbm2ddl -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>hibernate3-maven-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <componentProperties>
-            <outputfilename>${basedir}/src/main/resources/pd_card_schema.sql</outputfilename>
-          </componentProperties>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  
+  <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>desenvolvimento</id>
+			<properties>
+				<ambiente>D</ambiente>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>${project.basedir}/src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+					<resource>
+						<directory>${project.basedir}/src/main/resources/hbm</directory>
+						<targetPath>${project.build.directory}/hbm</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+  
   <dependencies>
   	<!-- DataBase -->
     <!-- <dependency>  
@@ -51,11 +62,18 @@
 		<artifactId>hibernate-c3p0</artifactId>
 		<version>${hibernateVersion}</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-ehcache</artifactId>
+		<version>${hibernateVersion}</version>
+	</dependency>
+            
     
-    <dependency>
+    <!-- <dependency>
 	   <groupId>net.sf.ehcache</groupId>
 	   <artifactId>ehcache-core</artifactId>
-	   <version>2.4.1</version>
+	   <version>2.6.3</version>
 	</dependency>
     
     <dependency>  
@@ -68,7 +86,14 @@
 		<groupId>net.sourceforge.jtds</groupId>
 		<artifactId>jtds</artifactId>
 		<version>1.2.4</version>
+	</dependency> -->
+	
+	<dependency>
+		<groupId>postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>9.1-901.jdbc4</version>
 	</dependency>
+            
 	
 	<dependency>
 		<groupId>commons-dbcp</groupId>
@@ -81,5 +106,6 @@
         <artifactId>card-model-domain</artifactId>
         <version>0.0.1</version>
     </dependency>
+    
   </dependencies>
 </project>

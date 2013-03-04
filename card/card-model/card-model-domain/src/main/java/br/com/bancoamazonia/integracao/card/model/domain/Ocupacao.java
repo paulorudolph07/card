@@ -1,6 +1,18 @@
 package br.com.bancoamazonia.integracao.card.model.domain;
 
 public class Ocupacao {
-	private Integer codigo;
+	private Short codigo;
 	private String descricao;
+	public Short getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Short codigo) {
+		this.codigo = codigo;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 }

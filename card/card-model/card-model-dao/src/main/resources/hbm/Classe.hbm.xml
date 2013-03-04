@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.integracao.card.model.domain.Classe" table="classe">
+		<id name="variante" type="byte"/>
+		<property name="descricao" not-null="true"/>
+		<property name="rendaMinima" column="renda_minima" not-null="true"/>
+		<property name="anuidade" not-null="true"/>
+	</class>
+</hibernate-mapping>

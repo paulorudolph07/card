@@ -5,12 +5,13 @@
 		<id name="id" type="long">
 			<generator class="identity"/>
 		</id>
-		<many-to-one name="estado" column="estado_id" class="br.com.bancoamazonia.integracao.card.model.domain.Estado"/>
-		<property name="cep" length="8"/>
-		<property name="numero"/>
-		<property name="municipio"/>
-		<property name="bairro"/>
-		<property name="logradouro"/>
+		<many-to-one name="estado" column="estado_id" not-null="true" 
+			class="br.com.bancoamazonia.integracao.card.model.domain.Estado"/>
+		<property name="cep" length="8" not-null="true"/>
+		<property name="numero" length="5" not-null="true"/>
+		<property name="municipio" not-null="true"/>
+		<property name="bairro" not-null="true"/>
+		<property name="logradouro" not-null="true"/>
 		<property name="complemento" not-null="false"/>
 	</class>
 </hibernate-mapping>

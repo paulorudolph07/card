@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.integracao.card.model.domain.ControleSistema" table="controle_sistema" >
+		<id name="id" type="byte"/>
+		<property name="aberto" not-null="true"/>
+		<property name="dataAnterior" column="data_anterior" not-null="true"/>
+		<property name="dataAtual" column="data_atual" not-null="true"/>
+		<property name="dataProxima" column="data_proxima" not-null="true"/>
+	</class>
+</hibernate-mapping>
