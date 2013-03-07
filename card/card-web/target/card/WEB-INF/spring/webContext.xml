@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop
+        				http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+						
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+	    <property name="scopes">
+	        <map>
+	            <entry key="view">
+	                <bean class="br.com.bancoamazonia.card.web.scopes.ViewScope"/>
+	            </entry>
+	        </map>
+	    </property>
+	</bean>
+	<!-- controllers -->
+	<bean id="verticalMenuController" class="br.com.bancoamazonia.card.web.controllers.VerticalMenuController" scope="view">
+		<aop:scoped-proxy/>
+	</bean>
+	
+	<bean id="tabController" class="br.com.bancoamazonia.card.web.controllers.TabController" scope="view">
+		<aop:scoped-proxy/>
+	</bean>
+	
+	<bean id="titularController" class="br.com.bancoamazonia.card.web.controllers.TitularController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="clienteService" ref="clienteService" />
+	</bean>
+
+</beans>

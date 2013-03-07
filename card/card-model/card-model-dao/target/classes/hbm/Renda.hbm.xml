@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.card.model.domain.Renda" table="renda">
+		<id name="id" type="long">
+			<generator class="identity"/>	
+		</id>
+		<many-to-one name="fontePagadora" column="codigo_fonte_pagadora" not-null="true"
+				class="br.com.bancoamazonia.card.model.domain.FontePagadora"/>
+		<many-to-one name="ocupacao" column="id_ocupacao" not-null="true"
+				class="br.com.bancoamazonia.card.model.domain.Ocupacao"/>
+		<property name="valor" not-null="true"/>
+		<property name="dataInicio" column="data_inicio" not-null="true"/>
+	</class>
+</hibernate-mapping>

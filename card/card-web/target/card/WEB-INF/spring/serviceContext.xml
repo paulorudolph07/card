@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop
+        				http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+						
+	<!-- TransactionManagers -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager"><ref bean="transactionManager"/></property>
+	    <property name="transactionAttributes">
+	    	<props>
+	    		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+	    		<prop key="load*">PROPAGATION_REQUIRED, readOnly</prop>
+	    		<prop key="find*">PROPAGATION_REQUIRED, readOnly</prop>
+	    		<prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+	    		<prop key="insert*">PROPAGATION_REQUIRED</prop>
+	    		<prop key="update*">PROPAGATION_REQUIRED</prop>
+	    		<prop key="*">PROPAGATION_REQUIRED, -java.lang.Exception</prop> 
+	    	</props>
+	    </property>
+	</bean>
+	 
+	 <bean id="clienteService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.ClienteService" scope="view">
+	        	<property name="clienteDao"><ref bean="clienteDao"/></property>
+	        </bean>
+	    </property>
+	 </bean>
+
+</beans>

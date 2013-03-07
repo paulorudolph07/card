@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.card.model.domain.DadoComercial" table="dado_comercial">
+		<id name="id" type="long">
+			<generator class="identity"/>
+		</id>
+		
+		<many-to-one name="cliente" column="codigo_cliente" not-null="true"
+			class="br.com.bancoamazonia.card.model.domain.Cliente"/>
+			
+		<many-to-one name="endereco" column="id_endereco" not-null="true" unique="true" cascade="save-update, delete"
+			class="br.com.bancoamazonia.card.model.domain.Endereco"/>
+			
+		<component name="telefone" class="br.com.bancoamazonia.card.model.domain.Telefone" >
+			<property name="ddd" column="ddd" length="2" not-null="true"/>
+			<property name="numero" column="telefone" length="8" not-null="true"/>
+		</component>
+		
+		<many-to-one name="renda" column="id_renda" not-null="true" unique="true" cascade="save-update, delete"
+			class="br.com.bancoamazonia.card.model.domain.Renda"/>
+	</class>
+</hibernate-mapping>

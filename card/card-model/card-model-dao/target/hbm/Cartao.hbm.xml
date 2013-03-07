@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.com.bancoamazonia.card.model.domain.Cartao" table="cartao">
+		<id name="numero" type="string" length="16"/>
+		<many-to-one name="cliente" column="codigo_cliente" not-null="true" 
+			class="br.com.bancoamazonia.card.model.domain.Cliente"/>
+		<many-to-one name="status" column="id_status" not-null="true" 
+			class="br.com.bancoamazonia.card.model.domain.Evento"/>
+		<many-to-one name="classe" column="id_classe" not-null="true" 
+			class="br.com.bancoamazonia.card.model.domain.Classe"/>
+		<many-to-one name="vencimento" column="id_vencimento" not-null="true"  
+			class="br.com.bancoamazonia.card.model.domain.Vencimento"/>
+		<many-to-one name="limite" column="id_limite" not-null="true"  
+			class="br.com.bancoamazonia.card.model.domain.Limite"/>
+		<many-to-one name="enderecoEntrega" column="id_endereco_entrega" not-null="true"  
+			class="br.com.bancoamazonia.card.model.domain.Endereco"/>
+		<property name="agencia" not-null="true"/>
+		<property name="cpfVendedor" column="cpf_vendedor" not-null="true" length="11"/>
+		<property name="avaliacaoEmergencial" column="avaliacao_emergencial" not-null="true"/>
+		<property name="programaRecompensa" column="programa_recompensa" not-null="true"/>
+		<property name="infoEmail" column="info_email" not-null="true"/>
+		<property name="infoTelefone" column="info_telefone" not-null="true"/>
+		<property name="infoCorreio" column="info_correio" not-null="true"/>
+	</class>
+</hibernate-mapping>

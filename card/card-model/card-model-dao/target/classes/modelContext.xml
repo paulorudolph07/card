@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- DataSources -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/card"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="postgres"/>
+    </bean>
+        
+    <!-- SessionFactorys -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" scope="singleton"> 
+        <property name="dataSource" ref="dataSource" />
+        <property name="mappingResources">
+            <list>
+                <value>hbm/Arquivo.hbm.xml</value>
+                <value>hbm/Cartao.hbm.xml</value>
+                <value>hbm/Classe.hbm.xml</value>
+                <value>hbm/ControleSistema.hbm.xml</value>
+                <value>hbm/DadoComercial.hbm.xml</value>
+                <value>hbm/DadoResidencial.hbm.xml</value>
+                <value>hbm/Documento.hbm.xml</value>
+                <value>hbm/Endereco.hbm.xml</value>
+                <value>hbm/Escolaridade.hbm.xml</value>
+                <value>hbm/Estado.hbm.xml</value>
+                <value>hbm/EstadoCivil.hbm.xml</value>
+                <value>hbm/Evento.hbm.xml</value>
+                <value>hbm/Limite.hbm.xml</value>
+                <value>hbm/Movimento.hbm.xml</value>
+                <value>hbm/Ocupacao.hbm.xml</value>
+                <value>hbm/Pessoa.hbm.xml</value>
+                <value>hbm/Renda.hbm.xml</value>
+                <value>hbm/Sexo.hbm.xml</value>
+                <value>hbm/SituacaoResidencial.hbm.xml</value>
+                <value>hbm/TipoArquivo.hbm.xml</value>
+                <value>hbm/TipoCliente.hbm.xml</value>
+                <value>hbm/TipoFontePagadora.hbm.xml</value>
+                <value>hbm/Vencimento.hbm.xml</value>
+           </list>
+       </property>
+       <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+               	<prop key="hibernate.hbm2ddl.auto">update</prop>
+               	<prop key="hibernate.current_session_context_class">thread</prop>
+               	<prop key="hibernate.pool_size">10</prop>
+               	<prop key="hibernate.generate_statistics">false</prop>
+               	<!-- connection pool -->
+               	<prop key="hibernate.c3p0.min_size">5</prop>
+			    <prop key="hibernate.c3p0.max_size">20</prop>
+			    <prop key="hibernate.c3p0.timeout">300</prop>
+			    <prop key="hibernate.c3p0.max_statements">50</prop>
+			    <prop key="hibernate.c3p0.idle_test_period">3000</prop>
+               	
+               	<!-- para processamento em lote -->
+               	<prop key="hibernate.jdbc.batch_size">20</prop>
+               	
+               	<!-- <prop key="hibernate.cache.region.factory_class" >net.sf.ehcache.hibernate.EhCacheRegionFactory</prop> -->
+               	<!--<prop key="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</prop>
+               	<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+               	<prop key="hibernate.cache.use_query_cache">true</prop> -->
+               	<!-- <prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop> -->
+            </props>
+        </property>
+    </bean>
+	
+	<!-- DAOs -->
+	<bean id="clienteDao" class="br.com.bancoamazonia.card.model.dao.ClienteDao">
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+
+</beans>
