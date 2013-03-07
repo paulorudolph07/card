@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				template="/templates/main.xhtml">   
+  
+  	<ui:define name="title">Lista de Titulares</ui:define>
+    <ui:define name="content">
+   		<p:growl autoUpdate="true" id="messages"/>
+	    <p:tabView id="tab-view" dynamic="true" activeIndex="#{tabController.tabIndex}">  
+	  
+	        <p:ajax event="tabChange" listener="#{tabController.onTabChange}" /> 
+	  
+	        <p:tab title="Lista">
+	        	<ui:include src="/pages/titular/list.xhtml" />
+	        </p:tab>
+	        
+	        <p:tab title="Editar">
+	        	<ui:include src="/pages/titular/edit.xhtml" />
+	        </p:tab>
+	        
+	        <p:tab title="Criar">
+	        	<ui:include src="/pages/titular/create.xhtml" />
+	        </p:tab>
+	  
+	    </p:tabView>
+	</ui:define>
+</ui:composition> 
