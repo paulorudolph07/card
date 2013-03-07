@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="br.com.bancoamazonia.integracao.card.model.domain.Identidade" table="identidade">
+	<class name="br.com.bancoamazonia.card.model.domain.Identidade" table="identidade">
 		<id name="numero" type="string"/>
-		<one-to-one name="cliente" foreign-key="codigo_cliente" class="br.com.bancoamazonia.integracao.card.model.domain.Cliente"/>
-		<many-to-one name="estado" column="estado_id" not-null="true" class="br.com.bancoamazonia.integracao.card.model.domain.Estado"/>
+		<one-to-one name="cliente" foreign-key="codigo_cliente" class="br.com.bancoamazonia.card.model.domain.Cliente"/>
+		<many-to-one name="estado" column="estado_id" not-null="true" class="br.com.bancoamazonia.card.model.domain.Estado"/>
 		<property name="orgaoEmissor" column="oragao_emissor" not-null="true"/>
 		<property name="dataEmissao" column="data_emissao" not-null="true"/>
 	</class>

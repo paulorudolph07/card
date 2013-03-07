@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="br.com.bancoamazonia.integracao.card.model.domain.Movimento" table="movimento">
+	<class name="br.com.bancoamazonia.card.model.domain.Movimento" table="movimento">
 		<composite-id>
 			<key-property name="cartao" column="numero_cartao" type="string" length="16"/>
 			<key-property name="evento" column="codigo_evento" type="byte"/>
@@ -12,6 +12,6 @@
 		<property name="valido" not-null="true"/>
 		<property name="matriculaUsuario" column="matricula_usuario" length="5" not-null="false"/>
 		<many-to-one name="arquivoOrigem" column="arquivo_origem" not-null="false" 
-			class="br.com.bancoamazonia.integracao.card.model.domain.Arquivo"/>
+			class="br.com.bancoamazonia.card.model.domain.Arquivo"/>
 	</class>
 </hibernate-mapping>

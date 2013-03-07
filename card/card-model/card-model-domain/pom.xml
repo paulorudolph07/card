@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>br.com.bancoamazonia.integracao.card</groupId>
+    <groupId>br.com.bancoamazonia.card</groupId>
     <artifactId>card-model</artifactId>
     <version>0.0.1</version>
   </parent>
@@ -11,7 +11,6 @@
   <name>card-model-domain</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
   </dependencies>

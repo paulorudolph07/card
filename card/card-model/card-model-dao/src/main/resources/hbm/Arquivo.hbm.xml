@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="br.com.bancoamazonia.integracao.card.model.domain.Arquivo" table="arquivo">
+	<class name="br.com.bancoamazonia.card.model.domain.Arquivo" table="arquivo">
 		<id name="nsu" type="integer"/>
-		<many-to-one name="tipo" column="id_tipo_arquivo" not-null="true" class="br.com.bancoamazonia.integracao.card.model.domain.TipoArquivo"/>
+		<many-to-one name="tipo" column="id_tipo_arquivo" not-null="true" class="br.com.bancoamazonia.card.model.domain.TipoArquivo"/>
 		<property name="dataProcessamento" column="data_processamento" not-null="true"/>
 	</class>
 </hibernate-mapping>

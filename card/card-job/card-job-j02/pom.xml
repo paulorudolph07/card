@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>br.com.bancoamazonia.integracao.card</groupId>
+    <groupId>br.com.bancoamazonia.card</groupId>
     <artifactId>card-job</artifactId>
     <version>0.0.1</version>
   </parent>

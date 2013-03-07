@@ -69,29 +69,10 @@
             </props>
         </property>
     </bean>
-    
-    <!-- TransactionManagers -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" scope="singleton">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	
-	<bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
-		<property name="transactionManager"><ref bean="transactionManager"/></property>
-	    <property name="transactionAttributes">
-	    	<props>
-	    		<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
-	    		<prop key="load*">PROPAGATION_REQUIRED, readOnly</prop>
-	    		<prop key="find*">PROPAGATION_REQUIRED, readOnly</prop>
-	    		<prop key="insert*">PROPAGATION_REQUIRED</prop>
-	    		<prop key="update*">PROPAGATION_REQUIRED</prop>
-	    		<prop key="*">PROPAGATION_REQUIRED, -java.lang.Exception</prop> 
-	    	</props>
-	    </property>
-	</bean>
 	
 	<!-- DAOs -->
-	<!-- <bean id="arquivoProcessadoDao" class="br.com.bancoamazonia.infrend.dao.ArquivoProcessadoDao">
+	<bean id="clienteDao" class="br.com.bancoamazonia.card.model.dao.ClienteDao">
 		<property name="sessionFactory" ref="sessionFactory"/> 
-	</bean> -->
+	</bean>
 
 </beans>
