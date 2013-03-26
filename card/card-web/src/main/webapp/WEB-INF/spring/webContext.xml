@@ -29,6 +29,78 @@
 	<bean id="titularController" class="br.com.bancoamazonia.card.web.controllers.TitularController" scope="view">
 		<aop:scoped-proxy/>
 		<property name="clienteService" ref="clienteService" />
+		<property name="titular">
+			<bean id="titular" class="br.com.bancoamazonia.card.model.domain.Cliente" scope="view">
+				<aop:scoped-proxy/>
+				<property name="celular">
+					<bean class="br.com.bancoamazonia.card.model.domain.Telefone" scope="prototype"/>
+				</property>
+			</bean>
+		</property>
+		<property name="identidade">
+			<bean id="identidade" class="br.com.bancoamazonia.card.model.domain.Identidade" scope="view">
+				<aop:scoped-proxy/>
+			</bean>
+		</property>
+		<property name="dadoResidencial">
+			<bean id="dadoResidencial" class="br.com.bancoamazonia.card.model.domain.DadoResidencial" scope="view">
+				<aop:scoped-proxy/>
+				<property name="endereco">
+					<bean id="endereco" class="br.com.bancoamazonia.card.model.domain.Endereco" scope="prototype"/>
+				</property>
+				<property name="telefone">
+					<bean id="telefone_res" class="br.com.bancoamazonia.card.model.domain.Telefone" scope="prototype"/>
+				</property>
+			</bean>
+		</property>
+		<property name="dadoComercial">
+			<bean id="dadoComercial" class="br.com.bancoamazonia.card.model.domain.DadoComercial" scope="view">
+				<aop:scoped-proxy/>
+				<property name="renda">
+					<bean id="renda" class="br.com.bancoamazonia.card.model.domain.Renda" scope="prototype">
+						<property name="fontePagadora">
+							<bean id="fontePagadora" class="br.com.bancoamazonia.card.model.domain.FontePagadora" scope="prototype"/>
+						</property>
+					</bean>
+				</property>
+				<property name="endereco">
+					<bean id="endereco" class="br.com.bancoamazonia.card.model.domain.Endereco" scope="prototype"/>
+				</property>
+				<property name="telefone">
+					<bean id="telefone_com" class="br.com.bancoamazonia.card.model.domain.Telefone" scope="prototype"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="estadoController" class="br.com.bancoamazonia.card.web.controllers.EstadoController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="estadoService" ref="estadoService" />
+	</bean>
+	
+	<bean id="estadoCivilController" class="br.com.bancoamazonia.card.web.controllers.EstadoCivilController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="estadoCivilService" ref="estadoCivilService" />
+	</bean>
+	
+	<bean id="escolaridadeController" class="br.com.bancoamazonia.card.web.controllers.EscolaridadeController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="escolaridadeService" ref="escolaridadeService" />
+	</bean>
+	
+	<bean id="situacaoResidencialController" class="br.com.bancoamazonia.card.web.controllers.SituacaoResidencialController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="situacaoResidencialService" ref="situacaoResidencialService" />
+	</bean>
+	
+	<bean id="tipoFontePagadoraController" class="br.com.bancoamazonia.card.web.controllers.TipoFontePagadoraController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="tipoFontePagadoraService" ref="tipoFontePagadoraService" />
+	</bean>
+	
+	<bean id="ocupacaoController" class="br.com.bancoamazonia.card.web.controllers.OcupacaoController" scope="view">
+		<aop:scoped-proxy/>
+		<property name="ocupacaoService" ref="ocupacaoService" />
 	</bean>
 
 </beans>

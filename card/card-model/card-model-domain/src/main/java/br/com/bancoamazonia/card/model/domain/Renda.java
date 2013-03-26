@@ -5,9 +5,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Renda implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1684437844354932739L;
 	// cliente e fonte = chave composta
 	private Long id;

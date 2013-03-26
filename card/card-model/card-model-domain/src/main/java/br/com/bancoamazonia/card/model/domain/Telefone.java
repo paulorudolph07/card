@@ -1,10 +1,14 @@
 package br.com.bancoamazonia.card.model.domain;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author root
  *
  */
-public class Telefone {
+public class Telefone implements Serializable {
+	private static final long serialVersionUID = 1600600631385897154L;
 	//private Long id;
 	private Byte ddd;
 	private Integer numero;

@@ -1,7 +1,9 @@
 package br.com.bancoamazonia.card.model.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.dao.DataAccessException;
 
@@ -42,6 +44,13 @@ public abstract class Dao<T> {
 	
 	public void persit(T obj) throws DataAccessException {
 		sessionFactory.getCurrentSession().persist(obj);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> list(Class<T> clazz) throws DataAccessException {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(clazz);
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return criteria.list();
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -1,6 +1,9 @@
 package br.com.bancoamazonia.card.model.domain;
 
-public class DadoResidencial extends DadoCliente {
+import java.io.Serializable;
+
+public class DadoResidencial extends DadoCliente implements Serializable {
+	private static final long serialVersionUID = -812092452205591677L;
 	private SituacaoResidencial situacaoResidencial;
 	public SituacaoResidencial getSituacaoResidencial() {
 		return situacaoResidencial;

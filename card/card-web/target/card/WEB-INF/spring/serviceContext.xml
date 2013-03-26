@@ -10,6 +10,7 @@
 						
 	<!-- TransactionManagers -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" scope="singleton">
+		<aop:scoped-proxy/>
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
@@ -31,8 +32,62 @@
 	 <bean id="clienteService" parent="transactionProxy">
 	 	<aop:scoped-proxy/>
 	    <property name="target">
-	        <bean class="br.com.bancoamazonia.card.service.ClienteService" scope="view">
-	        	<property name="clienteDao"><ref bean="clienteDao"/></property>
+	        <bean class="br.com.bancoamazonia.card.service.ClienteService" scope="request">
+	        	<property name="clienteDao" ref="clienteDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="estadoService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.EstadoService" scope="request">
+	        	<property name="estadoDao" ref="estadoDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="estadoCivilService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.EstadoCivilService" scope="request">
+	        	<property name="estadoCivilDao" ref="estadoCivilDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="escolaridadeService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.EscolaridadeService" scope="request">
+	        	<property name="escolaridadeDao" ref="escolaridadeDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="situacaoResidencialService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.SituacaoResidencialService" scope="request">
+	        	<property name="situacaoResidencialDao" ref="situacaoResidencialDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="tipoFontePagadoraService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.TipoFontePagadoraService" scope="request">
+	        	<property name="tipoFontePagadoraDao" ref="tipoFontePagadoraDao"/>
+	        </bean>
+	    </property>
+	 </bean>
+	 
+	 <bean id="ocupacaoService" parent="transactionProxy">
+	 	<aop:scoped-proxy/>
+	    <property name="target">
+	        <bean class="br.com.bancoamazonia.card.service.OcupacaoService" scope="request">
+	        	<property name="ocupacaoDao" ref="ocupacaoDao"/>
 	        </bean>
 	    </property>
 	 </bean>

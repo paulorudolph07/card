@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				template="/templates/main.xhtml">
+				
+  	<ui:define name="title">Cadastrar Cartao Titular</ui:define>
+  	<ui:define name="content">
+  		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#data_emissao_input").mask("99/99/9999")
+				$("#data_inicial_renda_input").mask("99/99/9999")
+			})
+		</script>
+	    <h:form id="validate-titular-form" prependId="false">
+			<p:messages autoUpdate="true" />
+			<p:outputPanel id="cpf-panel" rendered="#{titularController.titularValido == false}">
+		    	<h:panelGrid columns="3">
+		    		<h:outputLabel value="Cpf: *" for="cpf" />
+		    		<p:inputMask mask="999.999.999-99" id="cpf"
+						value="#{titularController.titular.codigo}" validator="CPFValidator"
+						required="true" requiredMessage="Campo *Cpf obrigatorio!"
+						size="11" maxlength="11">
+						<p:ajax event="blur" render="cpf-panel" />
+					</p:inputMask>
+		    		<p:commandButton actionListener="#{titularController.validate}" update="@form, :cadastro-titular-form" id="validate-button" 
+						icon="ui-icon-disk" title="validar" value="validar"/>
+		    	</h:panelGrid>
+	    	</p:outputPanel>
+	    </h:form>
+	    <h:form id="cadastro-titular-form" prependId="false">
+	    	<p:outputPanel id="dado-titular" rendered="#{titularController.titularValido == false}">
+	    	
+	    		<p:fieldset legend="Dados Titular" toggleable="true" toggleSpeed="500">
+			    	<h:panelGrid columns="2">
+			    		<h:outputLabel for="cpf" value="Cpf:"/>
+			    		<h:outputText value="#{titularController.titular.codigo}"/>
+			    		
+			    		<h:outputLabel for="nomeMae" value="Nome da mae: *" />
+			    		<p:inputText id="nomeMae" value="#{titularController.titular.nomeMae}" 
+			    			required="true" requiredMessage="Campo obrigatorio! *Nome da mae" size="45"/>
+			    	</h:panelGrid>
+			    	<h:panelGrid columns="6">
+			    		<h:outputLabel for="numero_identidade" value="Nº identidade: *"/>
+			    		<p:inputText id="numero_identidade" value="#{titularController.identidade.numero}" size="7" maxlength="7"
+			    			required="true" requiredMessage="Campo obrigatório! *Nº identidade"/>
+			    		
+			    		<h:outputLabel for="orgao_emissor" value="Orgão Emissor: *"/>
+			    		<p:inputText id="orgao_emissor" value="#{titularController.identidade.orgaoEmissor}"
+			    			required="true" requiredMessage="Campo obrigatório! *Orgão Emissor"/>
+			    			
+			    		<h:outputLabel for="uf_orgao" value="UF Orgão:"/>
+			    		<h:selectOneMenu value="#{titularController.identidade.estado}" converter="estadoConverter">  
+			            	<f:selectItems 
+			            		id="uf_orgao" 
+			            		value="#{estadoController.list}"  
+			                    var="e"   
+			                    itemLabel="#{e.uf}"  
+			                    itemValue="#{e}"/>  
+			            </h:selectOneMenu>
+			    	</h:panelGrid>
+			    	
+			    	<h:panelGrid columns="2">
+			    		<h:outputLabel for="data_emissao" value="Data Emissão: *"/>
+			    		<p:calendar id="data_emissao" value="#{titularController.identidade.dataEmissao}"
+			    			navigator="true" showOn="button" pattern="dd/MM/yyyy" 
+			    			locale="br" showButtonPanel="true"
+			    			size="8" maxlength="8"/>
+			    		
+			    		<h:outputLabel for="estado_civil" value="Estado Civil:"/>
+			    		<h:selectOneMenu value="#{titularController.titular.estadoCivil}" converter="estadoCivilConverter">  
+			            	<f:selectItems 
+			            		id="estado_civil" 
+			            		value="#{estadoCivilController.list}"  
+			                    var="ec"   
+			                    itemLabel="#{ec.uf}"  
+			                    itemValue="#{ec}"/>  
+			            </h:selectOneMenu>
+			            <h:outputLabel for="escolaridade" value="Grau de Instrução:"/>
+			    		<h:selectOneMenu value="#{titularController.titular.escolaridade}" converter="escolaridadeConverter">  
+			            	<f:selectItems 
+			            		id="escolaridade" 
+			            		value="#{escolaridadeController.list}"  
+			                    var="es"   
+			                    itemLabel="#{es.uf}"  
+			                    itemValue="#{es}"/>  
+			            </h:selectOneMenu>
+			    	</h:panelGrid>
+		    	</p:fieldset>
+		    	
+		    	<p:fieldset legend="Dado Residencial" toggleable="true" toggleSpeed="500">
+		    		<h:panelGrid columns="4">
+		    			<h:outputLabel for="cep_res" value="Cep: *"/>
+		    			<p:inputMask mask="99999-999" id="cep_res" value="#{titularController.dadoResidencial.endereco.cep}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Cep" size="8" maxlength="8"/>
+		    			<h:outputLabel for="logradouro_res" value="Logradouro: *"/>
+		    			<p:inputText id="logradouro_res" value="#{titularController.dadoResidencial.endereco.logradouro}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Logradouro" size="30"/>
+		    			
+		    			<h:outputLabel for="bairro_res" value="Bairro: *" />
+		    			<p:inputText id="bairro_res" value="#{titularController.dadoResidencial.endereco.bairro}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Bairro"/>
+		    			<h:outputLabel for="complemento_res" value="Complemento: "/>
+		    			<p:inputText id="complemento_res" value="#{titularController.dadoResidencial.endereco.complemento}" size="30"/>
+		    		</h:panelGrid>
+		    		<h:panelGrid columns="6">
+		    			<h:outputLabel for="municipio_res" value="Municipio: *"/>
+		    			<p:inputText id="municipio_res" value="#{titularController.dadoResidencial.endereco.municipio}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Municipio" size="20"/>
+		    			<h:outputLabel for="numero_endereco_res" value="Nº: *"/>
+		    			<p:inputText id="numero_endereco_res" value="#{titularController.dadoResidencial.endereco.numero}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Nº"/>
+		    			<h:outputLabel for="uf_end_res" value="UF:"/>
+		    			<h:selectOneMenu value="#{titularController.dadoResidencial.endereco.estado}" converter="estadoConverter">  
+			            	<f:selectItems 
+			            		id="uf_end_res" 
+			            		value="#{estadoController.list}"  
+			                    var="er"   
+			                    itemLabel="#{er.uf}"  
+			                    itemValue="#{er}"/>  
+			            </h:selectOneMenu>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="2">
+		    			<h:outputLabel for="situacao_res" value="Situacao:"/>
+		    			<h:selectOneMenu value="#{titularController.dadoResidencial.situacaoResidencial}" converter="situacaoResidencialConverter">
+		    				<f:selectItems
+		    					id="situacao_res"
+		    					value="#{situacaoResidencialController.list}"
+		    					var="sr"
+		    					itemLabel="#{sr.descricao}"
+		    					itemValue="#{sr}"
+		    				/>
+		    			</h:selectOneMenu>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="4">		    			
+		    			<h:outputLabel for="ddd_tel_res" value="DDD: *"/>
+		    			<p:inputText id="ddd_tel_res" value="#{titularController.dadoResidencial.telefone.ddd}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *DDD" size="2" maxlength="2"/>
+		    			<h:outputLabel for="numero_tel_res" value="Telefone: *"/>
+		    			<p:inputMask mask="9999-9999" id="numero_tel_res" value="#{titularController.dadoResidencial.telefone.numero}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Telefone" size="8" maxlength="8"/>
+		    				
+		    			<h:outputLabel for="ddd_cel" value="DDD:"/>
+		    			<p:inputText id="ddd_cel" value="#{titularController.titular.celular.ddd}" size="2" maxlength="2"/>
+		    			<h:outputLabel for="numero_cel" value="Celular: *"/>
+		    			<p:inputMask mask="9999-9999" id="numero_cel" value="#{titularController.titular.celular.numero}" size="8" maxlength="8"/>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="2">
+		    			<h:outputLabel for="email" value="Email:" />
+		    			<p:inputText id="email" value="#{titularController.titular.email}" size="40"/>
+		    		</h:panelGrid>
+		    		
+		    	</p:fieldset>
+		    	
+		    	<p:fieldset legend="Dado Comercial" toggleable="true" toggleSpeed="500">
+		    		<h:panelGrid id="dado_comercial_panel" columns="2">
+		    			<h:outputLabel for="tipo_fonte_pagadora" value="Tipo Fonte Pagadora:"/>
+		    			<h:selectOneMenu value="#{titularController.dadoComercial.renda.fontePagadora.tipo}" converter="tipoFontePagadoraConverter">
+		    				<f:selectItems
+		    					id="tipo_fonte_pagadora"
+		    					var="tfp"
+		    					itemLabel="#{tfp.descricao}"
+		    					itemValue="#{tfp}"
+		    				/>
+		    				<f:ajax event="change" render="dado_comercial_panel" />
+		    			</h:selectOneMenu>
+		    			
+		    			<p:outputPanel rendered="#{titularController.dadoComercial.renda.fontePagadora.tipo.id == 1}">
+		    				<h:outputLabel for="cpf_fonte_pagadora" value="Cpf Fonte Pagadora: *"/>
+		    				<p:inputMask mask="999.999.999-99" id="cpf_fonte_pagadora" value="#{titularController.dadoComercial.renda.fontePagadora.codigo}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Cpf Fonte Pagadora" size="11" maxlength="11"/>
+		    			</p:outputPanel>
+		    			
+		    			<p:outputPanel rendered="#{titularController.dadoComercial.renda.fontePagadora.tipo.id == 2}">
+			    			<h:outputLabel for="cnpj_fonte_pagadora" value="Cnpj Fonte Pagadora: *"/>
+			    			<p:inputMask mask="99.999.999/9999-99" id="cnpj_fonte_pagadora" value="#{titularController.dadoComercial.renda.fontePagadora.codigo}" 
+			    				required="true" requiredMessage="Campo Obrigatório! *Cnpj Fonte Pagadora" validator="CNPJValidator" 
+			    				size="11" maxlength="11"/>
+		    			</p:outputPanel>
+		    			
+		    			<h:outputLabel for="nome_fonte_pagadora" value="Nome: *"/>
+		    			<p:inputText id="nome_fonte_pagadora" value="#{titularController.dadoComercial.renda.fontePagadora.nome}" 
+		    				required="true" requiredeMessage="Campo Obrigatório! *Nome"/>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="4">
+		    			<h:outputLabel for="cep_com" value="Cep: *"/>
+		    			<p:inputMask mask="99999-999" id="cep_com" value="#{titularController.dadoComercial.endereco.cep}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Cep" size="8" maxlength="8"/>
+		    			<h:outputLabel for="logradouro_com" value="Logradouro: *"/>
+		    			<p:inputText id="logradouro_com" value="#{titularController.dadoComercial.endereco.logradouro}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Logradouro" size="30"/>
+		    			
+		    			<h:outputLabel for="bairro_com" value="Bairro: *" />
+		    			<p:inputText id="bairro_com" value="#{titularController.dadoComercial.endereco.bairro}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Bairro"/>
+		    			<h:outputLabel for="complemento_com" value="Complemento: "/>
+		    			<p:inputText id="complemento_com" value="#{titularController.dadoComercial.endereco.complemento}" size="30"/>
+		    		</h:panelGrid>
+		    		<h:panelGrid columns="6">
+		    			<h:outputLabel for="municipio_com" value="Municipio: *"/>
+		    			<p:inputText id="municipio_com" value="#{titularController.dadoComercial.endereco.municipio}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Municipio" size="20"/>
+		    			<h:outputLabel for="numero_endereco_com" value="Nº: *"/>
+		    			<p:inputText id="numero_endereco_com" value="#{titularController.dadoComercial.endereco.numero}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Nº"/>
+		    			<h:outputLabel for="uf_end_com" value="UF:"/>
+		    			<h:selectOneMenu value="#{titularController.dadoComercial.endereco.estado}" converter="estadoConverter">  
+			            	<f:selectItems 
+			            		id="uf_end_com" 
+			            		value="#{estadoController.list}"  
+			                    var="ec"   
+			                    itemLabel="#{ec.uf}"  
+			                    itemValue="#{ec}"/>  
+			            </h:selectOneMenu>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="4">		    			
+		    			<h:outputLabel for="ddd_tel_com" value="DDD: *"/>
+		    			<p:inputText id="ddd_tel_com" value="#{titularController.dadoComercial.telefone.ddd}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *DDD" size="2" maxlength="2"/>
+		    			<h:outputLabel for="numero_tel_com" value="Telefone: *"/>
+		    			<p:inputMask mask="9999-9999" id="numero_tel_com" value="#{titularController.dadoComercial.telefone.numero}" 
+		    				required="true" requiredMessage="Campo Obrigatório! *Telefone" size="8" maxlength="8"/>
+		    		</h:panelGrid>
+		    		
+		    		<h:panelGrid columns="2">
+		    			<h:outputLabel for="ocupacao" value="Ocupacao:"/>
+		    			<h:selectOneMenu value="#{titularController.dadoComercial.renda.ocupacao}" converter="ocupacaoConverter">
+		    				<f:selectItems
+		    					id="ocupacao"
+		    					value="#{ocupacaoController.list}"
+		    					var="oc"
+		    					itemLabel="#{oc.descricao}"
+		    					itemValue="#{oc}"
+		    				/>
+		    			</h:selectOneMenu>
+		    			
+		    			<h:outputLabel for="data_inicial_renda" value="Data Inicial Renda Formal: *"/>
+		    			<p:calendar id="data_inicial_renda" value="#{titularController.dadoComercial.renda.dataInicio}"
+			    			navigator="true" showOn="button" pattern="dd/MM/yyyy" 
+			    			locale="br" showButtonPanel="true"
+			    			size="8" maxlength="8"/>
+			    			
+			    		<h:outputLabel for="valor_renda" value="Valor Bruto: *"/>
+			    		<p:inputMask mask="999,999,999,999.99" id="valor_renda" value="#{titularController.dadoComercial.renda.valor}" 
+			    			required="true" requiredMessage="Campo Obrigatório! *Valor Bruto"/>
+		    		</h:panelGrid>
+		    		
+		    	</p:fieldset>
+	    	</p:outputPanel>
+	    	
+	    </h:form>
+    </ui:define>
+</ui:composition> 

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans 
 	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop
+        				http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
 	<!-- DataSources -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -71,8 +74,39 @@
     </bean>
 	
 	<!-- DAOs -->
-	<bean id="clienteDao" class="br.com.bancoamazonia.card.model.dao.ClienteDao">
+	<bean id="clienteDao" class="br.com.bancoamazonia.card.model.dao.ClienteDao" scope="request">
+		<aop:scoped-proxy/>
 		<property name="sessionFactory" ref="sessionFactory"/> 
 	</bean>
-
+	
+	<bean id="estadoDao" class="br.com.bancoamazonia.card.model.dao.EstadoDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
+	<bean id="estadoCivilDao" class="br.com.bancoamazonia.card.model.dao.EstadoCivilDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
+	<bean id="escolaridadeDao" class="br.com.bancoamazonia.card.model.dao.EscolaridadeDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
+	<bean id="situacaoResidencialDao" class="br.com.bancoamazonia.card.model.dao.SituacaoResidencialDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
+	<bean id="tipoFontePagadoraDao" class="br.com.bancoamazonia.card.model.dao.TipoFontePagadoraDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
+	<bean id="ocupacaoDao" class="br.com.bancoamazonia.card.model.dao.OcupacaoDao" scope="request">
+		<aop:scoped-proxy/>
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	
 </beans>

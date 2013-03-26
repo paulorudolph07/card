@@ -258,3 +258,26 @@ img.right {
 .ui-widget {
     font-size: 12px !important;
 }
+
+/* tableless */
+.row {
+	width: auto;
+	padding: 5px 0 8px 0;
+}
+
+.row label {
+	font-weight: bold;
+	float: left;
+	width: 160px;
+	clear: both;
+	text-align: right;
+	margin-right: 10px;
+}
+
+form .normal {
+	font-weight: bold;
+	float: none;
+	width: 120px;
+	margin-left: 10px;
+	margin-right: 10px;
+}

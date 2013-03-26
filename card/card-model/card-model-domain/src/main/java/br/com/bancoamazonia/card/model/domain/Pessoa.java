@@ -1,12 +1,7 @@
 package br.com.bancoamazonia.card.model.domain;
 
-import java.io.Serializable;
 
-public class Pessoa implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2710375040815806701L;
+public class Pessoa {
 	// id
 	private String codigo;
 	private String nome;

@@ -1,8 +1,10 @@
 package br.com.bancoamazonia.card.model.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Identidade extends Documento {
+public class Identidade extends Documento implements Serializable {
+	private static final long serialVersionUID = -6952949195859674239L;
 	private Estado estado;
 	private String orgaoEmissor;
 	private Date dataEmissao;
